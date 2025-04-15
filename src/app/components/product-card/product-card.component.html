@@ -1,4 +1,4 @@
-<div class="product-card">
+<div class="product-card shadow-2xl">
   <img [src]="product.image" [alt]="product.name" />
   <h3>{{ product.name }}</h3>
   <p>{{ product.description }}</p>
@@ -6,12 +6,15 @@
     <strong>KWD {{ product.price }}</strong>
   </p>
   @if (product.stock) {
-  <p>In stock: {{ product.stock }}</p>
+  <span [class.text-red-500]="getCurrentStock() === 0">
+    In Stock: {{ getCurrentStock() }}</span
+  >
   } @else {
   <p class="out-of-stock">Out of Stock</p>
   }
   <div class="actions">
-    <button>Add to Cart</button>
+    <button (click)="addToCart()">Add to Cart</button>
+
     <button [routerLink]="['/products', product.id]">View Product</button>
   </div>
 </div>

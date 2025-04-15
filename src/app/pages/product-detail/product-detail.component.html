@@ -4,8 +4,9 @@
   <img [src]="product.image" [alt]="product.name" />
   <p>{{ product.description }}</p>
   <p><strong>Price:</strong> {{ product.price }} KWD</p>
-  <p><strong>Stock:</strong> {{ product.stock }}</p>
-
+  <span [class.text-red-500]="getCurrentStock() === 0">{{
+    getCurrentStock()
+  }}</span>
   <div class="button-group">
     <button class="btn btn-primary">Add to Cart</button>
     <a routerLink="/products">
